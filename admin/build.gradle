@@ -1,0 +1,39 @@
+group 'com.google.firebase.example'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'com.google.firebase.example.Main'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    // Firebase Admin Java SDK
+//    compile 'com.google.firebase:firebase-admin:6.13.0'
+    compile 'com.google.firebase:firebase-admin:7.0.0'
+}
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'com.google.firebase.example.Main',
+                    'Implementation-Title': 'Gradle Jar File Example',
+                    'Implementation-Version': version
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.google.firebase.example.Main'
+    }
+}
+
