@@ -18,9 +18,9 @@ public class Process extends Thread{
     public Process() {
         fbm = new FirebaseMessagingSnippets();
     }
-    public void fillQueue() {
+    public void fillQueue(int size) {
         String topic = "sales";
-        for(int i = 1; i <= 400000; ++i) {
+        for(int i = 1; i <= size; ++i) {
             Message msg = Message.builder()
                     .setNotification(Notification.builder()
                             .setTitle("Price drop " + i)

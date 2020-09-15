@@ -1,2 +1,14 @@
-/admin/build/
-/database/build/
+.idea/
+.gradle/
+
+build/
+
+*.class
+*.war
+*.ear
+*.aar
+*.iml
+
+.project
+.classpath
+.settings

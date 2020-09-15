@@ -24,6 +24,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class Main {
@@ -74,7 +75,12 @@ public class Main {
 
         //test
         Process process = new Process();
-        process.fillQueue();
+
+        System.out.println("input number of msg: ");
+        int numberOfMsg;
+        Scanner scanner = new Scanner(System.in);
+        numberOfMsg = scanner.nextInt();
+        process.fillQueue(numberOfMsg);
         process.start();
 
         //test
